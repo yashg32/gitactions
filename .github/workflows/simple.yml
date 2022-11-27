@@ -11,6 +11,16 @@ jobs:
       - name: Push a random file
         run: |
           pwd 
+          ls -a
+          git init
+          git remote add origin "https://$GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY.git"
+          git config --global user.email "test@test.com"
+          git config --global user.name "test"
+          git fetch
+          git checkout master
+          git branch --set-upstream-to=origin/master
+          git pull
+          ls -a
           echo $RANDOM >> random.txt
           ls -a
           git add -A
