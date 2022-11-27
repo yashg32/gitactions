@@ -1,0 +1,21 @@
+name: Shell Command
+
+on: [push]
+
+jobs: 
+  run-shell-commands:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Start node server
+        run: echo "Run a node script"
+      - name: Start Multiple Scripts
+        run: |
+          node -v
+          npm -v
+      - name: JS Action
+        id: greet
+        uses: actions/hello-world-javascript-action@v1
+        with:
+          who-to-greet: Yash
+      - name: Log
+        run: echo "${{ steps.greet.outputs.time }}"
